@@ -8,39 +8,36 @@
         <div class="tarefas-concluidas" >
             <h3>Tarefas concluídas</h3>
             <ul>
-                <li>Português</li>
-                <li>Matemática</li>
-                <li>História</li>
+            @for (tarefa of tarefasConcluidas; track tarefa) {
+                <li>{{ tarefa }}</li>
+            }
             </ul>
         </div>
         
         <div class="tarefas-pendentes">
             <h3>Tarefas Pendentes</h3>
             <ul>
-                <li>Física</li>
-                <li>artes</li>
-                <li>Programação</li>
+            @for (tarefa of tarefasPendentes; track tarefa) {
+                <li>{{ tarefa }}</li>
+            }
             </ul>
         </div>
 
         <div class="materias-cadastradas">
-            <h3>Matérias cadastradas</h3>
-            <ul>
-                <li>Portugues</li>
-                <li>Matematica</li>
-                <li>História</li>
-                <li>fisica</li>
-                <li>artes</li>
-                <li>Programação</li>
-                
-            </ul>
+        <h3>Matérias cadastradas</h3>
+        <ul>
+            @for (materia of materiasCadastradas; track materia) {
+            <li>{{ materia }}</li>
+            }
+        </ul>
         </div>
 
         <div class="bloco-tarefas-futuras">
             <h3>Matérias futuras</h3>
             <ul>
-                <li>Elementos da natureza</li>
-                <li>Cálculo 1</li>
+            @for (tarefa of tarefasFuturas; track tarefa) {
+                <li>{{ tarefa }}</li>
+            }
             </ul>
         </div>
     </div>
