@@ -1,0 +1,45 @@
+.bloco-apresentacao{
+  padding: 2rem;
+  text-align: center;
+}
+.bloco-resumo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 2rem;
+}
+
+
+.tarefas-concluidas,
+.tarefas-pendentes,
+.materias-cadastradas,
+.bloco-tarefas-futuras {
+  min-height: 140px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f8fafc;
+}
+
+.bloco-resumo > h2 {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+:host {
+  display: block;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+
+@media (max-width: 600px) {
+  .bloco-resumo {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .bloco-apresentacao {
+    padding: 1rem;
+  }
+}
