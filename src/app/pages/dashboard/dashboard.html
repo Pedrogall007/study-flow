@@ -1,46 +1,81 @@
-    <div class="bloco-apresentacao">
-    <h1 title="Apresentação">Ola estudande! Você esta na plataforma Studyflow</h1>
-    <p>Aqui vc podera se Organizar e deixar os seus estudos ainda mais praticos. </p>
-    </div>
-    <div class="bloco-resumo">
-        <h2>Resumo:</h2>
 
-        <div class="tarefas-concluidas" >
-            <h3>Tarefas concluídas</h3>
-            <ul>
-            @for (tarefa of tarefasConcluidas; track tarefa) {
-                <li>{{ tarefa }}</li>
-            }
-            </ul>
-        </div>
-        
-        <div class="tarefas-pendentes">
-            <h3>Tarefas Pendentes</h3>
-            <ul>
-            @for (tarefa of tarefasPendentes; track tarefa) {
-                <li>{{ tarefa }}</li>
-            }
-            </ul>
-        </div>
 
-        <div class="materias-cadastradas">
-        <h3>Matérias cadastradas</h3>
+<div class="bloco-apresentacao">
+<h1 title="Apresentação">Ola estudande! Você esta na plataforma Studyflow</h1>
+<p>Aqui vc podera se Organizar e deixar os seus estudos ainda mais praticos. </p>
+</div>
+<div class="bloco-resumo">
+    <h2>Resumo:</h2>
+
+    <div class="tarefas-concluidas" >
+        <h3>Tarefas concluídas</h3>
         <ul>
-            @for (materia of materiasCadastradas; track materia) {
-            <li>{{ materia }}</li>
-            }
+        @for (tarefa of tarefasConcluidas; track tarefa) {
+            <li>{{ tarefa }}</li>
+        }
         </ul>
-        </div>
-
-        <div class="bloco-tarefas-futuras">
-            <h3>Matérias futuras</h3>
-            <ul>
-            @for (tarefa of tarefasFuturas; track tarefa) {
-                <li>{{ tarefa }}</li>
-            }
-            </ul>
-        </div>
     </div>
+    
+    <div class="tarefas-pendentes">
+        <h3>Tarefas Pendentes</h3>
+        <ul>
+        @for (materia of materiasPendentes; track materia.nome) {
+        <li>{{ materia.nome }}</li>
+        <button type="button" (click)="concluirMateria(materia)">
+            Concluir
+        </button>
+        }
+        </ul>
+    </div>
+
+    <div class="materias-cadastradas">
+    <h3>Matérias cadastradas</h3>
+    <ul>
+        @for (materia of materiasCadastradas; track materia) {
+        <li>{{ materia }}</li>
+        }
+    </ul>
+    </div>
+
+    <div class="bloco-tarefas-futuras">
+        <h3>Matérias futuras</h3>
+        <ul>
+        @for (materia of materiasFuturas; track materia.nome){
+            <li>{{materia.nome}}</li>
+            <button type="button" (click)="iniciarMateria(materia)"
+            >
+            Iniciar materia
+          </button>
+         }
+        </ul>
+    </div>    
+
+    <div class="implementacao-materias">
+    <form (ngSubmit)="cadastrarMateria()">
+        <label for="nome-materia">Nome da matéria:</label>
+        <input
+        id="nome-materia"
+        type="text"
+        name="nome"
+        [(ngModel)]="novaMateriaNome"
+        />
+
+        <label for="status-materia">Status:</label>
+        <select
+        id="status-materia"
+        name="status"
+        [(ngModel)]="novoMateriaStatus"
+        >
+        <option value="concluida">Concluída</option>
+        <option value="pendente">Pendente</option>
+        <option value="futura">Futura</option>
+        </select>
+
+        <button type="submit">Cadastrar matéria</button>
+    </form>
+    </div>
+
+</div>
 
 
 

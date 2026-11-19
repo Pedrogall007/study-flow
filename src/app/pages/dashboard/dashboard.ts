@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 interface Materia {
   nome: string;
   status: 'concluida' | 'pendente' | 'futura';
 }
 
 @Component({
-  imports: [],
+  imports: [FormsModule],
   selector: 'app-dashboard',
   styleUrl: './dashboard.css',
   templateUrl: './dashboard.html',
@@ -41,4 +41,47 @@ export class Dashboard {
   { nome: 'Artes', status: 'pendente' },
   { nome: 'Elementos da natureza', status: 'futura' },
 ];
+
+novaMateriaNome = '';
+novoMateriaStatus: 'concluida' | 'pendente' | 'futura' = 'pendente';
+
+cadastrarMateria(){
+  const nome = this.novaMateriaNome.trim();
+
+  if(!nome){
+    return
+  }
+  this.materias.push({
+    nome,
+    status: this.novoMateriaStatus
+  })
+  this.novaMateriaNome = '';
+}
+
+concluirMateria(materia: Materia){
+  if (materia.status === 'pendente') {
+    materia.status = 'concluida';
+  }
+}
+
+iniciarMateria(materia: Materia){
+  if (materia.status === 'futura'){
+    materia.status = 'pendente';
+  }
+
+
+}
+
+get materiasPendentes() {
+  return this.materias.filter(
+    (materia) => materia.status === 'pendente'
+  );
+}
+
+get materiasFuturas(){
+  return this.materias.filter(
+    (materia) => materia.status === 'futura'
+  )
+}
+
 }
